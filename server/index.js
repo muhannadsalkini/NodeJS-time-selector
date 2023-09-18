@@ -1,9 +1,19 @@
 import express from "express";
 import mongoose from "mongoose";
 import requestRoutes from "./routes/requests.js";
+import cors from "cors";
+
+// Allow requests from http://localhost:3000
+const allowedOrigins = ["http://localhost:3000"];
 
 const app = express();
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 
 const PORT = 4001;
 
